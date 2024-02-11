@@ -37,6 +37,7 @@ clipboard = "copyq"
 editor = "code"
 firefox = "firefox"
 telegram = "telegram-desktop"
+file_manager = 'thunar'
 
 
 @hook.subscribe.startup_once
@@ -107,7 +108,7 @@ keys = [
 
     Key([mod], "b", lazy.spawn(firefox),
         desc="Run Firefox"),
-    Key([mod], "e", lazy.spawn("nemo"), desc="Run file explorer"),
+    Key([mod], "e", lazy.spawn(file_manager), desc="Run file explorer"),
 
     Key([mod, "shift"], "a", lazy.spawn("flameshot gui"),
         desc="Run flameshot screenshot"),
