@@ -137,9 +137,9 @@ def fix_group(window):
 
 
 groups = [
+    Group("i", label="code[i]", spawn=editor),
     Group("semicolon", label="browse[;]", spawn=firefox),
     Group("m", label="(m)sg", spawn=telegram),
-    Group("i", label="code[i]", spawn=editor),
     Group("o", label="terminal[o]", spawn=terminal),
     Group("s", label="(s)potify"),
     Group("apostrophe", label="other[']", spawn=clipboard),
