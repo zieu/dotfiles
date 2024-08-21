@@ -124,6 +124,8 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn(
         "playerctl next"), desc='playerctl next song'),
     Key([mod, 'control'], "v", lazy.spawn(clipboard + " toggle")),
+    Key([mod], "y", lazy.spawn(
+        "playerctl play-pause"), desc='playerctl play/pause'),
 ]
 
 
@@ -137,15 +139,15 @@ def fix_group(window):
 
 
 groups = [
-    Group("i", label="code[i]", spawn=editor),
-    Group("semicolon", label="browse[;]", spawn=firefox),
-    Group("m", label="(m)sg", spawn=telegram),
-    Group("o", label="terminal[o]", spawn=terminal),
-    Group("s", label="(s)potify"),
-    Group("apostrophe", label="other[']", spawn=clipboard),
-    Group("1", label="1"),
-    Group("2", label="2"),
-    Group("3", label="3"),
+    Group("i", label="[i]", spawn=editor),
+    Group("semicolon", label="[;]", spawn=firefox),
+    Group("m", label="[m]", spawn=telegram),
+    Group("o", label="[o]", spawn=terminal),
+    Group("s", label="[s]"),
+    Group("apostrophe", label="[']", spawn=clipboard),
+    Group("1", label="[1]"),
+    Group("2", label="[2]"),
+    Group("3", label="[3]"),
 ]
 
 for i in groups:
@@ -169,13 +171,13 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_width=4,
-                   margin=4,
+    layout.Columns(border_width=6,
+                   margin=8,
                    border_on_single=False,
-                   border_focus=["#40A2D8"],
-                   border_normal=[catppuccin["black"]]
+                   border_focus=["#F9826C"],
+                   border_normal=[catppuccin["black"]],
                    ),
-    layout.Max(border_width=2, margin=1, border_focus=[catppuccin["black"]]),
+    layout.Max(border_width=4, margin=4, border_focus=[catppuccin["black"]]),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -195,9 +197,9 @@ def parse_notification(message):
 
 
 widget_defaults = dict(
-    font="Monaspace Krypton",
-    fontsize=15,
-    padding=6,
+    font="Agave Nerd Font",
+    fontsize=16,
+    padding=4,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -205,58 +207,76 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayoutIcon(scale=0.8),
+                widget.Spacer(
+                    length=4,
+                ),
+                widget.CurrentLayoutIcon(
+                    scale=0.7,
+                    background=catppuccin["black"],
+                ),
                 widget.GroupBox(
                     highlight_method="line",
-                    this_current_screen_border=[catppuccin["sky"]],
+                    highlight_color=catppuccin["black"],
+                    this_current_screen_border=["#ffffff"],
                     invert_mouse_wheel=True,
                     active=catppuccin["white"],
                     inactive=catppuccin["gray"],
                     urgent_alert_method="text",
                     urgent_text=catppuccin["red"],
+                    fontsize=16,
+                    font="Agave Nerd Font"
                 ),
                 widget.WindowName(
-                    foreground=catppuccin["blue"],
-                    fontsize=13,
+                    foreground=catppuccin["white"],
+                    fontsize=14,
                 ),
                 widget.Net(
-                    format="D: {down:.0f}{down_suffix} U: {up:.0f}{up_suffix}",
-                    foreground=catppuccin["teal"],
+                    format="⇣ {down:.0f}{down_suffix} ⇡ {up:.0f}{up_suffix}",
+                    foreground=catppuccin["white"],
+                    padding=10,
+                    fontsize=15,
                 ),
                 widget.Volume(
-                    fmt="vol: {}",
+                    fmt="𝅘𝅥𝅮𝆕 {}",
                     mute_command="amixer -D pulse set Master toggle",
-                    foreground=catppuccin["flamingo"],
+                    foreground=catppuccin["white"],
                     padding=10,
+                    fontsize=15,
                 ),
                 widget.Memory(
-                    format="ram: {MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}",
-                    foreground=catppuccin["sky"],
+                    format="🔾 {MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}",
+                    foreground=catppuccin["white"],
                     measure_mem='G',
+                    padding=10,
+                    fontsize=15,
                 ),
                 widget.CPU(
-                    format="cpu: {load_percent:04}%",
-                    foreground=catppuccin["yellow"],
+                    format="░ {load_percent:04}%",
+                    foreground=catppuccin["white"],
                     padding=10,
+                    fontsize=15,
                 ),
                 widget.Clock(
-                    format="%Y-%m-%d %a %I:%M %p",
-                    foreground=catppuccin["pink"],
+                    format="%d日%m月%y年 %a %I:%M %p",
+                    foreground=catppuccin["white"],
                     padding=10,
+                    fontsize=16,
                 ),
                 widget.Systray(
                     icon_size=18,
+                    padding=10,
+                    fontsize=15,
                 ),
                 # widget.Bluetooth(),
                 widget.Spacer(
-                    length=10
+                    length=10,
                 ),
             ],
-            32,
+            26, # bar size
             border_width=[2, 2, 0, 2],  # Draw top and bottom borders
-            border_color=[catppuccin["black"], catppuccin["red"],
-                          catppuccin["black"], catppuccin["red"]],  # Borders are magenta
-            background=catppuccin["black"],
+            border_color=[catppuccin["black"], "#F9826C",
+                          catppuccin["black"], "#F9826C",],
+            background="#1c1c1f60",
         ),
         # wallpaper='/home/zieu/walls/anime-1.jpg',
         # wallpaper_mode='fill',
@@ -284,7 +304,7 @@ floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
     border_width=4,
-    border_focus=catppuccin["sky"],
+    border_focus=catppuccin["gray"],
     border_normal=catppuccin["black"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.

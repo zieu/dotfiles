@@ -11,6 +11,6 @@ catppuccin = {
     "blue": "#96cdfb",
     "sky": "#89dceb",
     "white": "#d9e0ee",
-    "gray": "#6f6f7f",
-    "black": "#1a1826",
+    "gray": "#acacbf",
+    "black": "#1a182620",
 }

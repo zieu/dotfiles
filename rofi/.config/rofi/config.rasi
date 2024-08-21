@@ -16,9 +16,9 @@ configuration {
 @theme "/dev/null"
 
 * {
-  bg: #1c1c24;
-  bg-alt: #1c1c24;
-  bg-selected: #23232e;
+  bg: #00000020;
+  bg-alt: #00000020;
+  bg-selected: #11111170;
 
   fg: #cdd6f4;
   fg-alt: #7f849c;
@@ -31,12 +31,15 @@ configuration {
 }
 
 window {
-  width: 25%;
+  width: 20%;
+  height: 410;
   background-color: @bg;
+  padding: 6;
+  border-radius: 10;
 }
 
 element {
-  padding: 14 14;
+  padding: 11 14;
   background-color: transparent;
   text-color: @fg-alt;
 }
@@ -54,7 +57,7 @@ element-text {
 
 element-icon {
   size: 22;
-  padding: 0 10 0 0;
+  padding: 0 16 0 0;
   background-color: transparent;
 }
 
