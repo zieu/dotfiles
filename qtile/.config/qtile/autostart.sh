@@ -9,3 +9,4 @@ function run {
 
 run nitrogen --restore &
 run sxhkd &
+run picom &

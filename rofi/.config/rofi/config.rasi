@@ -1,5 +1,5 @@
 configuration {
-  display-drun: "Apps:";
+  display-drun: "";
   display-window: "Wins:";
   drun-display-format: "{name}";
   font: "JetBrainsMono Nerd Font Medium 10";
@@ -16,12 +16,13 @@ configuration {
 @theme "/dev/null"
 
 * {
-  bg: #00000020;
-  bg-alt: #00000020;
-  bg-selected: #11111170;
+  bg: #14141455;
+  bg-alt: #14141440;
+  bg-selected: #ffffff05;
 
-  fg: #cdd6f4;
-  fg-alt: #7f849c;
+  fg: #e1e6f5;
+  fg-alt: #cdd6f489;
+  fg-selected: #ffffff;
 
   
   border: 0;
@@ -31,28 +32,31 @@ configuration {
 }
 
 window {
-  width: 20%;
-  height: 410;
+  width: 16%;
+  height: 272;
   background-color: @bg;
-  padding: 6;
-  border-radius: 10;
+  border-radius: 8;
 }
 
 element {
   padding: 11 14;
+  margin: 0 8;
   background-color: transparent;
   text-color: @fg-alt;
+  border-radius: 10;
 }
 
 element selected {
-  text-color: @fg;
+  text-color: @fg-selected;
   background-color: @bg-selected;
+  border: 1;
+  border-color: #ffffff20;
 }
 
 element-text {
   background-color: transparent;
   text-color: inherit;
-  vertical-align: 0.5;
+  vertical-align: 0;
 }
 
 element-icon {
@@ -75,19 +79,19 @@ inputbar {
 listview {
   background-color: @bg;
   columns: 1;
-  lines: 10;
+  lines: 5;
 }
 
 mainbox {
   children: [inputbar, listview];
   background-color: @bg;
+  padding: 2;
 }
 
 prompt {
   enabled: true;
-  padding: 12 0 0 12;
+  padding: 0 0 0 0;
   background-color: @bg-alt;
-  text-color: @fg;
 }
 
 /* vim: ft=sass

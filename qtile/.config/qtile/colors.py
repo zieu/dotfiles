@@ -1,4 +1,4 @@
-catppuccin = {
+colors = {
     "flamingo": "#F3CDCD",
     "mauve": "#DDB6F2",
     "pink": "#f5c2e7",
@@ -13,4 +13,5 @@ catppuccin = {
     "white": "#d9e0ee",
     "gray": "#acacbf",
     "black": "#1a182620",
+    "primary": "#7462d9",
 }

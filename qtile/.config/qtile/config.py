@@ -30,7 +30,7 @@ from libqtile import bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
-from colors import catppuccin
+from colors import colors
 
 terminal = "alacritty"
 clipboard = "copyq"
@@ -171,13 +171,13 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_width=6,
-                   margin=8,
+    layout.Columns(border_width=4,
+                   margin=4,
                    border_on_single=False,
-                   border_focus=["#F9826C"],
-                   border_normal=[catppuccin["black"]],
+                   border_focus=[colors["primary"]],
+                   border_normal=[colors["black"]],
                    ),
-    layout.Max(border_width=4, margin=4, border_focus=[catppuccin["black"]]),
+    layout.Max(border_width=4, margin=4, border_focus=[colors["black"]]),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -212,53 +212,53 @@ screens = [
                 ),
                 widget.CurrentLayoutIcon(
                     scale=0.7,
-                    background=catppuccin["black"],
+                    background=colors["black"],
                 ),
                 widget.GroupBox(
                     highlight_method="line",
-                    highlight_color=catppuccin["black"],
+                    highlight_color=colors["black"],
                     this_current_screen_border=["#ffffff"],
                     invert_mouse_wheel=True,
-                    active=catppuccin["white"],
-                    inactive=catppuccin["gray"],
+                    active=colors["white"],
+                    inactive=colors["gray"],
                     urgent_alert_method="text",
-                    urgent_text=catppuccin["red"],
+                    urgent_text=colors["red"],
                     fontsize=16,
                     font="Agave Nerd Font"
                 ),
                 widget.WindowName(
-                    foreground=catppuccin["white"],
+                    foreground=colors["white"],
                     fontsize=14,
                 ),
                 widget.Net(
                     format="⇣ {down:.0f}{down_suffix} ⇡ {up:.0f}{up_suffix}",
-                    foreground=catppuccin["white"],
+                    foreground=colors["white"],
                     padding=10,
                     fontsize=15,
                 ),
                 widget.Volume(
                     fmt="𝅘𝅥𝅮𝆕 {}",
                     mute_command="amixer -D pulse set Master toggle",
-                    foreground=catppuccin["white"],
+                    foreground=colors["white"],
                     padding=10,
                     fontsize=15,
                 ),
                 widget.Memory(
                     format="🔾 {MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}",
-                    foreground=catppuccin["white"],
+                    foreground=colors["white"],
                     measure_mem='G',
                     padding=10,
                     fontsize=15,
                 ),
                 widget.CPU(
                     format="░ {load_percent:04}%",
-                    foreground=catppuccin["white"],
+                    foreground=colors["white"],
                     padding=10,
                     fontsize=15,
                 ),
                 widget.Clock(
                     format="%d日%m月%y年 %a %I:%M %p",
-                    foreground=catppuccin["white"],
+                    foreground=colors["white"],
                     padding=10,
                     fontsize=16,
                 ),
@@ -274,8 +274,8 @@ screens = [
             ],
             26, # bar size
             border_width=[2, 2, 0, 2],  # Draw top and bottom borders
-            border_color=[catppuccin["black"], "#F9826C",
-                          catppuccin["black"], "#F9826C",],
+            border_color=[colors["black"], colors["primary"],
+                          colors["black"], colors["primary"],],
             background="#1c1c1f60",
         ),
         # wallpaper='/home/zieu/walls/anime-1.jpg',
@@ -304,8 +304,8 @@ floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
     border_width=4,
-    border_focus=catppuccin["gray"],
-    border_normal=catppuccin["black"],
+    border_focus=colors["gray"],
+    border_normal=colors["black"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
